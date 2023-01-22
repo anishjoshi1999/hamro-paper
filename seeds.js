@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const dotenv = require("dotenv").config()
 const mongoose = require('mongoose')
-const Info = require('./models/info')
+const Subject = require('./models/subject')
 const MONGODB_URI = `mongodb+srv://${process.env.MONGODB_ATLAS_USERNAME}:${process.env.MONGODB_ATLAS_PASSWORD}@hamropaper.73vdqph.mongodb.net/${process.env.MONGODB_ATLAS_COLLECTION}`
 // Connection to Database
 mongoose.set('strictQuery', false);
@@ -18,48 +18,52 @@ mongoose.connect(MONGODB_URI)
         console.log("error found")
         console.log(err)
     })
-const urls = {
-    homePageURL:"https://img.freepik.com/free-vector/save-planet-concept-illustration-with-man-woman_23-2148509643.jpg?w=740&t=st=1674183605~exp=1674184205~hmac=6782935e81b3b0e40044d7d6ef534ed21e06bee3f1d807d2e397d31e00a1e0b1",
-    viewAllURL:"https://img.freepik.com/premium-vector/map-nepal-red-background-with-long-shadow_601298-1023.jpg?w=2000",
-    bottomURL:"https://img.freepik.com/free-vector/hand-drawn-people-planting-tree-illustration_23-2149214943.jpg?w=740&t=st=1674183563~exp=1674184163~hmac=edfdca322bae13e068a9f421a80aa15b8a088e6e6d36d7cfd61a9b1486284912",
-    provinces:[
-        {
-            provinceName:"Province No. 1",
-            provinceURL:"https://nepaltraveller.com/uploads/destination/province-no-1.png"
-        },
-        {
-            provinceName:"Province No. 2",
-            provinceURL:"https://nepaltraveller.com/uploads/destination/province-no-2.png"
-        },
-        {
-            provinceName:"Province No. 3",
-            provinceURL:"https://nepaltraveller.com/uploads/destination/province-no-3.png"
-        },
-        {
-            provinceName:"Gandaki Pradesh",
-            provinceURL:"https://nepaltraveller.com/uploads/destination/province-no-4.jpg"
-        },
-        {
-            provinceName:"Province No. 5",
-            provinceURL:"https://nepaltraveller.com/uploads/destination/province-no-5.png"
-        },
-        {
-            provinceName:"Karnali Pradesh",
-            provinceURL:"https://nepaltraveller.com/uploads/destination/province-no-6.jpg"
-        },
-        {
-            provinceName:"Sudurpashchim Pradesh",
-            provinceURL:"https://nepaltraveller.com/uploads/destination/province-no-7.jpg"
-        }
-    ]
-}
+const subjectsInfo = [
+            {
+                subjectName: "English",
+                subjectURL: "https://media.istockphoto.com/id/511281043/photo/multiethnic-group-of-children-and-english-concept.jpg?b=1&s=170667a&w=0&k=20&c=EWckAARo41_qko_9Iuf5m5YTrKSFh0HmG2jEM47LCX0="
+            },
+            {
+                subjectName: "Nepali",
+                subjectURL: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bmVwYWx8ZW58MHx8MHx8&w=1000&q=80"
+            },
+            {
+                subjectName: "Compulsory Mathematics",
+                subjectURL: "https://media.istockphoto.com/id/636332456/photo/online-education-concept.jpg?b=1&s=170667a&w=0&k=20&c=t-cEbf4E2bR4hSzwa8T0GOvywSNCaX-Hq1iQbjQo1UE="
+            },
+            {
+                subjectName: "Science",
+                subjectURL: "https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHNjaWVudGlmaWN8ZW58MHx8MHx8&w=1000&q=80"
+            },
+            {
+                subjectName: "Optional Mathematics",
+                subjectURL: "https://images.unsplash.com/photo-1635372722656-389f87a941b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWF0aGVtYXRpY3N8ZW58MHx8MHx8&w=1000&q=80"
+            },
+            {
+                subjectName: "Social Studies",
+                subjectURL: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c29jaWFsJTIwc3R1ZGllc3xlbnwwfHwwfHw%3D&w=1000&q=80"
+            },
+            {
+                subjectName: "Environment, Population and Health",
+                subjectURL: "https://images.unsplash.com/photo-1421789665209-c9b2a435e3dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZW52aXJvbm1lbnR8ZW58MHx8MHx8&w=1000&q=80"
+            },
+            {
+                subjectName: "Computer Science",
+                subjectURL: "https://images.unsplash.com/photo-1617240016072-d92174e44171?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGNvbXB1dGVyJTIwc2NpZW5jZXxlbnwwfHwwfHw%3D&w=1000&q=80"
+            },
+            {
+                subjectName: "Accountancy",
+                subjectURL: "https://images.unsplash.com/photo-1626266061368-46a8f578ddd6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWNjb3VudHxlbnwwfHwwfHw%3D&w=1000&q=80"
+            }
+        ]
 
-app.get('/update',async(req,res)=> {
+
+app.get('/update', async (req, res) => {
     // Delete all the existing InfoURL
-    await Info.deleteMany({})
+    await Subject.deleteMany({})
     // Insert New Urls into Info Collections
     try {
-        const newInfos = await Info.insertMany(urls)
+        const newInfos = await Subject.insertMany(subjectsInfo)
         console.log("New Infos added successfully")
         console.log(newInfos)
     } catch (error) {

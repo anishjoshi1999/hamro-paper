@@ -1,0 +1,79 @@
+<%layout('layouts/boilerplate')%>
+  <%if(provinces){%>
+    <div>
+      <h1 class="pb-4">Explore Provinces</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Provinces</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Explore Provinces</li>
+        </ol>
+      </nav>
+
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
+        <% if(typeof provinces !=='undefined' && provinces.length> 0) { %>
+          <% provinces.forEach(function(province, index) { %>
+            <a href="/province/<%- province.provinceNumber %>" class="col text-center category__link">
+              <div class="category__img shadow">
+                <img src="<%- province.provinceURL %>" alt="<%- province.provinceName %>" loading="lazy">
+              </div>
+              <div class="pt-1"><%- province.provinceName %></div>
+            </a>
+            <% }) %>
+              <% } %>
+      </div>
+    </div>
+    <%}else if(years){%>
+      <div>
+        <h1 class="pb-4">Explore Years</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/province">Provinces</a></li>
+            <li class="breadcrumb-item"><a href="#">Years</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Explore Years</li>
+          </ol>
+        </nav>
+        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
+          <% if(typeof years !=='undefined' && years.length> 0) { %>
+            <% years.forEach(function(yearInfo, index) { %>
+              <a href="/province/<%-id%>/<%-yearInfo.year%>" class="col text-center category__link">
+                <div class="category__img shadow">
+                  <img src="<%=yearInfo.image%>" alt="<%= yearInfo.year %>" loading="lazy">
+                </div>
+                <div class="pt-1">
+                  <%=yearInfo.year %>
+                </div>
+              </a>
+              <% }) %>
+                <% } %>
+        </div>
+      </div>
+      <%}else {%>
+        <div>
+          <h1 class="pb-4">Explore Years</h1>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/province">Provinces</a></li>
+              <li class="breadcrumb-item"><a href="/province/<%-id%>">Years</a></li>
+              <li class="breadcrumb-item"><a href="#">Subjects</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Explore Subjects</li>
+            </ol>
+          </nav>
+          <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
+            <% if(typeof subjectsInfo !=='undefined' && subjectsInfo.length> 0) { %>
+              <% subjectsInfo.forEach(function(subjectInfo, index) { %>
+                <a href="#" class="col text-center category__link">
+                  <div class="category__img shadow">
+                    <img src="<%=subjectInfo.subjectURL%>" alt="<%= subjectInfo.subjectName %>" loading="lazy">
+                  </div>
+                  <div class="pt-1">
+                    <%=subjectInfo.subjectName %>
+                  </div>
+                </a>
+                <% }) %>
+                  <% } %>
+          </div>
+        </div>
+        <%}%>

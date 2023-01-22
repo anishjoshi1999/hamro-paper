@@ -12,10 +12,6 @@ const infoSchema = new mongoose.Schema({
   bottomURL: {
     type: String,
     required: 'This field is required.'
-  },
-  provinces:{
-    type:Array,
-    required:"Provinces are required"
   }
 });
 module.exports = mongoose.model('Info', infoSchema);

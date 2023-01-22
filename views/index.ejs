@@ -1,16 +1,16 @@
 <%layout('layouts/boilerplate')%>
 <div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
   <div class="col-12 col-lg-6">
-    <img src="<%-infos.homePageURL%>" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="Cooking With Node.js">
+    <img src="<%-infos.homePageURL%>" width="400" height="350" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="Cooking With Node.js">
   </div>
   <div class="col-12 col-lg-6">
-    <h1 class="display-5 fw-bold mb-3">Huge selection of delicios recipe ideas</h1>
+    <h1 class="display-5 fw-bold mb-3">Welcome to <%=title%> !</h1>
     <p class="lead">
-      Explore our huge selection of delicious recipe ideas including; easy desserts, delicious vegan and vegetarian dinner ideas, gorgeous pasta recipes, quick bakes, family-friendly meals and gluten-free recipes.
+      We are currently provide free access to past SEE old question papers for class 10 students. The goal is to reduce paper consumption and promote sustainability in education by providing a digital platform for exam preparation.
     </p>
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-      <a href="#" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a>
-      <a href="#" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Show Random</a>
+      <a href="#" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">SEE: Exam Questions</a>
+      <a href="#" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Show Random Paper</a>
     </div>
   </div>
 </div>
@@ -18,7 +18,7 @@
 <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
   <% if(provinces != '') { %>
     <% provinces.forEach(function(province, index) { %>
-      <a href="<%- province.provinceName %>" class="col text-center category__link">
+      <a href="/province/<%- province.provinceNumber %>" class="col text-center category__link">
         <div class="category__img shadow">
           <img src="<%- province.provinceURL %>" alt="<%- province.provinceName %>" loading="lazy">
         </div>
@@ -26,7 +26,8 @@
       </a>
     <% }) %>
   <% } %>
-  <a href="#" class="col text-center category__link">
+  <!-- Showing all the provinces of Nepal -->
+  <a href="/province" class="col text-center category__link">
     <div class="category__img shadow">
       <img src="<%-infos.viewAllURL%>" alt="View All Categories" loading="lazy">
     </div>
@@ -34,3 +35,49 @@
   </a>
 </div>
 <!-- Categories End -->
+
+<!-- Latest Start -->
+
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Latest Paper Uploads</h2>
+    <a href="#" class="ms-auto">View More</a>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+      <a href="#" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="#" alt="#" loading="lazy">
+        </div>
+        <div class="pt-1">Hello</div>
+      </a>
+      <a href="#" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="#" alt="#" loading="lazy">
+        </div>
+        <div class="pt-1">Hello</div>
+      </a>
+      <a href="#" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="#" alt="#" loading="lazy">
+        </div>
+        <div class="pt-1">Hello</div>
+      </a>
+  </div>
+
+
+</section>
+<!-- Latest End -->
+
+<!-- Submit - Start -->
+<section class="px-4 py-5 my-5 text-center">
+  <img src="<%-infos.bottomURL%>" class="d-block mx-auto mb-4 img-fluid" alt="Publish your recipe for FREE today" width="566" height="208" loading="lazy">
+  <h1 class="display-5 fw-bold">"Green Horizon: Planting for a Brighter Future"</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-3">90% of all donations will go towards planting new trees, and the remaining 10% will be used for maintenance and upkeep of our infrastructure.</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="#" class="btn btn-primary btn-dark btn-lg">Donate Now</a>
+    </div>
+  </div>
+</section>
